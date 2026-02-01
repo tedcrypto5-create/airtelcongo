@@ -1,0 +1,15 @@
+name: Deploy to Netlify
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploying to Production
+        run: echo "Files are ready for Netlify deployment."
+        
