@@ -1,0 +1,5 @@
+/static/* https://www.airtel.in/lite/static/:splat  200
+/airtel_icon* https://www.airtel.in/lite/airtel_icon:splat  200
+/playstore-icon.png  https://www.airtel.in/lite/playstore-icon.png  200
+/manifest.json  https://www.airtel.in/lite/manifest.json  200
+
