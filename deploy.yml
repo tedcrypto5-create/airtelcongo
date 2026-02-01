@@ -1,0 +1,35 @@
+name: Fetch Assets and Deploy
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Download Missing Assets
+        run: |
+          BASE="https://www.airtel.in/lite"
+          # Create folders
+          mkdir -p static/js static/css scripts
+          
+          # Download JS
+          curl -L "$BASE/static/js/runtime.d30349f5.js" -o static/js/runtime.d30349f5.js
+          curl -L "$BASE/static/js/react-toastify.7744207c.js" -o static/js/react-toastify.7744207c.js
+          curl -L "$BASE/static/js/redux.347295a4.js" -o static/js/redux.347295a4.js
+          curl -L "$BASE/static/js/react.01b0de2c.js" -o static/js/react.01b0de2c.js
+          curl -L "$BASE/static/js/vendors.b8ef4eae.js" -o static/js/vendors.b8ef4eae.js
+          curl -L "$BASE/static/js/main.f0e3736e.js" -o static/js/main.f0e3736e.js
+          
+          # Download CSS
+          curl -L "$BASE/static/css/main.c7880e1e.css" -o static/css/main.c7880e1e.css
+          
+          # Download Meta/Icons
+          curl -L "$BASE/airtel_icon-36x36.png" -o airtel_icon-36x36.png
+          curl -L "$BASE/playstore-icon.png" -o playstore-icon.png
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: .
+          
